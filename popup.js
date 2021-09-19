@@ -22,7 +22,7 @@ generateLink.addEventListener('click', () => {
         fetch(url, {
             method: "POST",
             body: JSON.stringify({
-                "fullUrl": tabs.map(x => x.url),
+                "fullUrls": tabs.map(x => x.url),
             })
         }).then(response => response.json())
             .then(json => {
@@ -88,12 +88,11 @@ function closeToasts() {
     }
 }
 
-// let numOfTabs = 0;
-// // document.getElementById("numTabs").innerHTML = numOfTabs;
-
-// chrome.browserAction.onClicked.addListener(
-// function (tabs) {
-//     chrome.tabs.query({currentWindow: true, highlighted: true}, function (tabs) {
-//         numOfTabs = tabs.length;
-//     });
-// });
+document.addEventListener('DOMContentLoaded', function() {
+    chrome.tabs.query({currentWindow: true, highlighted: true}, function (tabs) {
+        console.log(tabs.length)
+        let numOfTabs = 1;
+        numOfTabs = tabs.length;
+        document.getElementById("numTabs"),innerHTML = numOfTabs;
+    });
+});

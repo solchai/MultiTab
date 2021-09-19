@@ -10,13 +10,17 @@
         "default_popup": "popup.html"
     },
     "background": {
-        "service_worker": "background.js"
+        "service_worker": ["background.js"],
+        "persistent": false
     },
     "permissions": [
         "tabs",
         "bookmarks",
         "storage"
     ],
+    "browser_action": {
+        
+    },
     "options_ui": {
         "page": "options.html",
         "open_in_tab": false
