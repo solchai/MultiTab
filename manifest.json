@@ -1,29 +1,17 @@
 {
-    "name": "MultiTab",
-    "description": "Share multiple tabs with a SINGLE url!",
-    "version": "1.0.0",
-    "manifest_version": 3,
-    "icons": {
-        "128": "assets/placeHolder.png"
-    },
-    "action": {
-        "default_popup": "popup.html"
-    },
-    "background": {
-        "service_worker": ["background.js"],
-        "persistent": false
-    },
-    "permissions": [
-        "tabs",
-        "bookmarks",
-        "storage"
-    ],
-    "browser_action": {
-        
-    },
-    "options_ui": {
-        "page": "options.html",
-        "open_in_tab": false
-    }
-
+  "name": "MultiTab",
+  "description": "Share multiple tabs with a SINGLE url!",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "icons": {
+    "128": "assets/placeHolder.png"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": ["tabs", "bookmarks", "storage"],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  }
 }
