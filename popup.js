@@ -1,5 +1,4 @@
 let generateLink = document.querySelector('#generate');
-console.log(generateLink)
 let copyLinkBtn = document.querySelector('#copyLinkBtn')
 let toastWarning = document.querySelector('.toast-warning')
 let toastSuccess = document.querySelector('.toast-success')
@@ -9,10 +8,7 @@ let toastClose = document.querySelector('#close')
 let mainLabel = document.querySelector('#mainLabel')
 let url = "http://localhost:5000/urlCombiner"
 
-console.log(copyLinkBtn)
-console.log(mainLabel)
-
-var shortURL = "shortURL"
+var shortURL = "dfbsdjkf bsdjbflblwebljfbjlf"
 
 generateLink.addEventListener('click', () => {
     console.log("start generating link")
@@ -37,7 +33,7 @@ generateLink.addEventListener('click', () => {
                 mainLabel.innerHTML = shortURL
                 
                 toastSuccess.classList.remove('d-hide')
-                generateURL.classList.add('d-hide')
+                generateLink.classList.add('d-hide')
                 copyLinkBtn.classList.remove('d-hide');
                 return;
             })
@@ -64,12 +60,17 @@ toastClose.addEventListener('click', async () => {
 });
 
 function copyToClipboard() {
+    closeToasts()
     var copyFrom = document.createElement("textarea");
-    copyFrom.textContent = text;
+    copyFrom.value = shortURL;
     document.body.appendChild(copyFrom);
     copyFrom.select();
     document.execCommand('copy');
+    document.body.removeChild(copyFrom)
     toastCopied.classList.remove('d-hide')
+    setTimeout(() => {
+        toastCopied.classList.add('d-hide')
+    }, 2000)
 }
 
 function closeToasts() {
