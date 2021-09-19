@@ -5,13 +5,9 @@ let toastClose = document.querySelector("#close");
 let mainLabel = document.querySelector("#mainLabel");
 let url = "http://localhost:5000/urlCombiner";
 
-console.log(copyLinkBtn);
-console.log(mainLabel);
-
 var shortURL = "shortURL";
 
 generateLink.addEventListener("click", () => {
-  console.log("start generating link");
   closeToasts();
 
   chrome.tabs.query(
@@ -32,7 +28,6 @@ generateLink.addEventListener("click", () => {
         .then((response) => response.json())
         .then((json) => {
           closeToasts();
-          console.log(json);
           shortURL = "http://localhost:5000/" + json;
 
           mainLabel.innerHTML = shortURL;
@@ -85,7 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
   chrome.tabs.query(
     { currentWindow: true, highlighted: true },
     function (tabs) {
-      console.log(tabs.length);
       let numOfTabs = 1;
       numOfTabs = tabs.length;
       document.getElementById("numTabs"), (innerHTML = numOfTabs);
