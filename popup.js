@@ -1,8 +1,5 @@
 let generateLink = document.querySelector("#generate");
 let copyLinkBtn = document.querySelector("#copyLinkBtn");
-let toastWarning = document.querySelector(".toast-warning");
-let toastSuccess = document.querySelector(".toast-success");
-let toastCopied = document.querySelector(".toast-primary");
 let toastError = document.querySelector(".toast-error");
 let toastClose = document.querySelector("#close");
 let mainLabel = document.querySelector("#mainLabel");
@@ -16,13 +13,11 @@ var shortURL = "shortURL";
 generateLink.addEventListener("click", () => {
   console.log("start generating link");
   closeToasts();
-  toastWarning.classList.remove("d-hide");
 
   chrome.tabs.query(
     { currentWindow: true, highlighted: true },
     function (tabs) {
       closeToasts();
-      toastWarning.classList.remove("d-hide");
 
       const fullUrls = [];
 
@@ -38,11 +33,11 @@ generateLink.addEventListener("click", () => {
         .then((json) => {
           closeToasts();
           console.log(json);
-          shortURL = json
+          shortURL = "http://localhost:5000/" + json;
 
           mainLabel.innerHTML = shortURL;
+          copyToClipboard();
 
-          toastSuccess.classList.remove("d-hide");
           generateLink.classList.add("d-hide");
           copyLinkBtn.classList.remove("d-hide");
           return;
@@ -61,7 +56,7 @@ copyLinkBtn.addEventListener("click", async () => {
 });
 
 mainLabel.addEventListener("click", async () => {
-  if ((!copyLinkBtn, classList.contains("d-hide"))) {
+  if (!copyLinkBtn.classList.contains("d-hide")) {
     copyToClipboard();
   }
 });
@@ -78,24 +73,11 @@ function copyToClipboard() {
   copyFrom.select();
   document.execCommand("copy");
   document.body.removeChild(copyFrom);
-  toastCopied.classList.remove("d-hide");
-  setTimeout(() => {
-    toastCopied.classList.add("d-hide");
-  }, 2000);
 }
 
 function closeToasts() {
   if (!toastError.classList.contains("d-hide")) {
     toastError.classList.add("d-hide");
-  }
-  if (!toastSuccess.classList.contains("d-hide")) {
-    toastSuccess.classList.add("d-hide");
-  }
-  if (!toastWarning.classList.contains("d-hide")) {
-    toastWarning.classList.add("d-hide");
-  }
-  if (!toastCopied.classList.contains("d-hide")) {
-    toastCopied.classList.add("d-hide");
   }
 }
 
