@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="spectre.min.css">
+        <title>TabMaster</title>
+        <script defer src="popup.js"></script>
+        <style>
+            body {
+                width: 300px;
+                height: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <div class="card-header">
+                <div class="toast toast-warning d-hide">
+                    <button class="btn btn-clear float-right" id="close"></button>
+                    Creating link...
+                </div>
+                <div class="toast toast-success d-hide">
+                    <button class="btn btn-clear float-right" id="close"></button>
+                    Link generated!
+                </div>
+                <div class="toast toast-primary d-hide">
+                    <button class="btn btn-clear float-right" id="close"></button>
+                    Copied to Clipboard!
+                </div>
+                <div class="toast toast-error d-hide">
+                    <button class="btn btn-clear float-right" id="close"></button>
+                    Oopsies, Error
+                </div>
+              <div class="card-title h5">TabMaster</div>
+              <div class="card-subtitle text-gray"></div>
+            </div>
+            <div class="card-body">
+                <span class="label label-rounded label-secondary" id="mainLabel">
+                    You have selected <script src="popup.js">document.write(numOfTabs)</script> tabs
+                </span>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-success d-hide" id="copyLinkBtn">Click link to Copy</button>
+              <button class="btn btn-primary" id="generate">Generate Link</button>
+            </div>
+          </div>
+    </body>
+</html>
